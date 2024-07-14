@@ -2,15 +2,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, where, getDocs } from "firebase/firestore"; 
-
+import dotenv from 'dotenv';
+dotenv.config();
 const firebaseConfig = {
-    apiKey: "AIzaSyDvIH6eBe8ezFAYZWm4oNOhmWW4Car1zk8",
-    authDomain: "pwa-webapp-svelte.firebaseapp.com",
-    projectId: "pwa-webapp-svelte",
-    storageBucket: "pwa-webapp-svelte.appspot.com",
-    messagingSenderId: "965497794517",
-    appId: "1:965497794517:web:43d6cbf926eaed6d85575c",
-    measurementId: "G-8Y8H0815VY"
+    apiKey: process.env.ApiKey,
+    authDomain: process.env.AuthDomain,
+    projectId: process.env.ProjectId,
+    storageBucket: process.env.StorageBucket,
+    messagingSenderId: process.env.MessagingSenderId,
+    appId: process.env.AppId,
+    measurementId: process.env.MeasurementId
   };
 
 const app = initializeApp(firebaseConfig);
