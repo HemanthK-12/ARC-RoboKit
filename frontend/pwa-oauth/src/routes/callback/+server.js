@@ -23,7 +23,8 @@ export const GET = async ({ url, cookies }) => {
 
     const user_details=await getUserData(user.access_token);
     console.log('user_details printingggg ', user_details);
-    // cookies.set('user_details', JSON.stringify(user_details), {path:'/'});
+    cookies.set('user_details', JSON.stringify(user_details), {path:'/'});
+    console.log("COOOOOOKKKKKKIIIIIIEEEEESSSSSS",cookies.get('user_details'));
   } catch (err) {
     console.log('Error logging in with OAuth2 user', err);
   }
