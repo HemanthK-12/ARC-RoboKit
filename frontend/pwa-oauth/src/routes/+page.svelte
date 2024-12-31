@@ -1,6 +1,7 @@
 <script>
     export let form;
 </script>
+
 <h1>Hello !</h1>
 <form class="auth-form" method="post" action="?/OAuth2">
     <button class="btn-auth" type="submit">
