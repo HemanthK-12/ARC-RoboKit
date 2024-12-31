@@ -2,7 +2,7 @@
     export let form;
 </script>
 
-<h1>Hello !</h1>
+<center><h1>Authenticate Here.</h1></center>
 <form class="auth-form" method="post" action="?/OAuth2">
     <button class="btn-auth" type="submit">
         <img
