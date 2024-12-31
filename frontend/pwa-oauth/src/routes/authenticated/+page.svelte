@@ -7,15 +7,15 @@
   <div class="profile-card">
     <h1>Welcome, {user.name}!</h1>
     <div class="image-container">
-      //don't use "picture","image" or "photo" words in the alt attribute to
-      avoid the screen readers error.
+      <!--don't use "picture","image" or "photo" words in the alt attribute to
+      avoid the screen readers error.-->
       <img
         src={user.picture}
         alt="Profile"
         loading="lazy"
         referrerpolicy="no-referrer"
       />
-      //use this no-referrer policy above, otherwise photos with googleusercontent.com in their url won't be displayed.
+      <!--use this no-referrer policy above, otherwise photos with googleusercontent.com in their url won't be displayed.-->
     </div>
     <p class="email">Email: {user.email}</p>
   </div>
