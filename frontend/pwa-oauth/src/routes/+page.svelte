@@ -3,7 +3,7 @@
 </script>
 
 <center><h1>Authenticate Here.</h1></center>
-<form class="auth-form" method="post" action="?/OAuth2">
+<form class="flex flex-col justify-center text-center items-center" method="post" action="?/OAuth2">
     <button class="login-with-google-btn" type="submit">Sign In with Google</button>
 </form>
 
@@ -41,11 +41,6 @@
             0 0 0 3px #c8dafc;
         }
     }
-    .auth-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+    
+    
 </style>
