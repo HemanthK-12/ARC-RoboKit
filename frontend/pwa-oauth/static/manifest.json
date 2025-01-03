@@ -1,0 +1,17 @@
+{
+    "name": "RoboKit",
+    "short_name": "RoboKit",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "/ARC_512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },
+      {
+        "src": "/ARC_192.png",
+        "sizes": "192x192"
+      }
+    ]
+  }
