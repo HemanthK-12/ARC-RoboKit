@@ -25,7 +25,7 @@
 {/if}
 
 <style>
-  :global(body) {
+  body{
     background: #1a202c;
     color: #e2e8f0;
     margin: 0;
