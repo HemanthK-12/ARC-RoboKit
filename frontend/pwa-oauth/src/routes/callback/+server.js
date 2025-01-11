@@ -26,5 +26,5 @@ export const GET = async ({ url, cookies }) => {
   } catch (err) {
     console.log('Error logging in with Google', err);
   }
-  throw redirect(303, '/authenticated');
+  throw redirect(303, '/home');
 };
