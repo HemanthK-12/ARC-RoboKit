@@ -1,42 +1,48 @@
 <script>
-    let active = 'home';
+  import { Home, Search, ShoppingCart, User } from 'lucide-svelte';
+  import { writable } from 'svelte/store';
+  import "../../app.css";
+  let activeTab = writable('home');
 </script>
-<nav>
-    <div class="navbar">
-        <a href="/home" class:active={active === 'home'} on:click={() => active = 'home'}>Home</a>
-        <a href="/cart" class:active={active === 'cart'} on:click={() => active = 'cart'}>Cart</a>
-        <a href="/profile" class:active={active === 'profile'} on:click={() => active = 'profile'}>Profile</a>
+
+<div class="fixed bottom-6 left-0 right-0 flex justify-center">
+  <nav class="bg-black backdrop-blur-lg rounded-full px-2 py-2 mx-4 shadow-lg shadow-black/20">
+    <div class="flex items-center gap-2">
+      <a 
+        href="/home"
+        on:click={() => activeTab.set('home')}
+        class="p-3 rounded-full transition-all { $activeTab === 'home' ? 'bg-[var(--robokit-red)] text-white' : 'text-gray-400 hover:text-white hover:bg-gray-700' }"
+      >
+
+        <Home class="w-6 h-6" />
+      </a>
+      <a 
+        href="/search"
+        on:click={() => activeTab.set('search')}
+        class="p-3 rounded-full transition-all { $activeTab === 'search' ? 'bg-[var(--robokit-yellow)] text-black' : 'text-gray-400 hover:text-white hover:bg-gray-700' }"
+      >
+        <Search class="w-6 h-6" />
+      </a>
+      <a 
+        href="/cart"
+        on:click={() => activeTab.set('cart')}
+        class="p-3 rounded-full transition-all { $activeTab === 'cart' ? 'bg-[var(--robokit-blue)] text-white' : 'text-gray-400 hover:text-white hover:bg-gray-700' }"
+      >
+        <ShoppingCart class="w-6 h-6" />
+      </a>
+      <a 
+        href="/profile"
+        on:click={() => activeTab.set('profile')}
+        class="p-3 rounded-full transition-all { $activeTab === 'profile' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-700' }"
+      >
+        <User class="w-6 h-6" />
+      </a>
     </div>
-</nav>
-    <style>
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-    
-        .navbar a {
-            flex: 1;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-    
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-    
-        .navbar a.active {
-            background-color: #04AA6D;
-            color: white;
-        }
-    </style>
+  </nav>
+</div>
+
+<style>
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+</style>
