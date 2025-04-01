@@ -1,3 +1,5 @@
-node_modules
-robokit-446206-firebase-adminsdk-ddy9z-7e7c3795bc.json
+node_modules/
 .env
+.env.*
+!.env.example
+env/
