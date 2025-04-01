@@ -1,7 +1,7 @@
 <script>
 export let data;
 const user = data.user;
-
+//has fields sub, name, given_name, family_name, picture, email, email_verified
   const inventoryHistory = [
     { id: 1, item: 'Arduino Uno', date: '2023-03-01', status: 'Borrowed' },
     { id: 2, item: 'Servo Motor', date: '2023-02-15', status: 'Returned' },
@@ -19,7 +19,11 @@ const user = data.user;
   <!-- Navigation Bar -->
   <nav class="sticky top-0 z-10 bg-[#1E1E1E] shadow-md px-4 py-3 flex justify-between items-center border-b border-[#333333]">
     <div class="flex items-center gap-2">
-      <div class="h-6 w-6 bg-[#FF4413] rounded-full"></div>
+      <img 
+      src="/ARC.png" 
+      alt="Robokit Logo" 
+      class="h-12 w-12 rounded-full object-cover"
+    />
       <h1 class="font-bold text-xl text-white">Robokit</h1>
     </div>
     <div class="flex items-center gap-4">
@@ -42,9 +46,11 @@ const user = data.user;
           </div>
           <div class="p-6">
             <div class="flex flex-col items-center text-center">
-              <div class="h-24 w-24 border-4 border-[#2A2A2A] shadow-lg mb-4 rounded-full bg-[#FF4413] text-white text-xl flex items-center justify-center">
-                {user.name.split(' ').map(n => n[0]).join('')}
-              </div>
+              <img 
+                src={user.picture} 
+                alt="User Profile" 
+                class="h-24 w-24 rounded-full border-4 border-[#6AB1EB] mb-4"
+              />
               <h2 class="text-xl font-semibold text-white">{user.name}</h2>
               <p class="text-gray-400 mb-4">{user.email}</p>
               
