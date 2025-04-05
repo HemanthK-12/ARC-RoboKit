@@ -9,7 +9,6 @@ async function getUserData(access_token) {
 }
 export const GET = async ({ url, cookies }) => {
   const code = await url.searchParams.get('code');
-  try {
     const oAuth2Client = new OAuth2Client(
       CLIENT_ID,
       CLIENT_SECRET,
@@ -20,11 +19,11 @@ export const GET = async ({ url, cookies }) => {
     oAuth2Client.setCredentials(r.tokens);
     const user = oAuth2Client.credentials;
     const user_details=await getUserData(user.access_token);
-    // console.log('user_details printingggg ', user_details);
+    
     cookies.set('user_details', JSON.stringify(user_details), {path:'/'});
-    // console.log("COOOOOOKKKKKKIIIIIIEEEEESSSSSS",cookies.get('user_details'));
-  } catch (err) {
-    console.log('Error logging in with Google', err);
-  }
-  throw redirect(303, '/home');
+    console.log("COOOOOOKKKKKKIIIIIIEEEEESSSSSS",user_details["email"]);
+    if(user_details["email"]=="f20220053@hyderabad.bits-pilani.ac.in")
+      throw redirect(303, '/home');
+    else
+      throw redirect(303, '/unauthorized');
 };
