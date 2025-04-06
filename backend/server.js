@@ -13,7 +13,14 @@ async function getInventory(req,res)
     res.json(inventory);
 }
 
+async function getUsers(req,res)
+{
+    const snapshot=await db.collection("users").get();
+    const users=snapshot.docs.map(doc=>({id:doc.id,...doc.data()}));
+    res.json(users);
+}
 
+app.get("/api/users",getUsers);
 app.get("/api/inventory",getInventory);
 
 const PORT=5000;
