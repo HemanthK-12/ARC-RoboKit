@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc, getDocs} from "firebase/firestore"; 
+import { collection, addDoc, getDocs, doc, updateDoc} from "firebase/firestore"; 
 import dotenv from 'dotenv';
 dotenv.config();
 // TODO: Add SDKs for Firebase products that you want to use
@@ -157,11 +157,36 @@ const inventoryData =
   }
 ]
 
-const uploadData = async () => {
-  for (const item of inventoryData) {
-      await addDoc(collection(db, "inventory"), item);
-      console.log("Added:", item);
+const updateInventoryWithAvailableQuantity = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "inventory"));
+    
+    const updatePromises = querySnapshot.docs.map(async (document) => {
+      const docRef = doc(db, "inventory", document.id);
+      const currentData = document.data();
+      
+      // Set availableQuantity equal to quantity if it doesn't exist
+      if (!currentData.availableQuantity) {
+        await updateDoc(docRef, {
+          availableQuantity: currentData.quantity
+        });
+        console.log(`Updated document ${document.id} with availableQuantity: ${currentData.quantity}`);
+      }
+    });
+
+    await Promise.all(updatePromises);
+    console.log("All documents updated successfully");
+  } catch (error) {
+    console.error("Error updating documents:", error);
   }
 };
 
-uploadData();
+updateInventoryWithAvailableQuantity();
+// const uploadData = async () => {
+//   for (const item of inventoryData) {
+//       await addDoc(collection(db, "inventory"), item);
+//       console.log("Added:", item);
+//   }
+// };
+
+// uploadData();
