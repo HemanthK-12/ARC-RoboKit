@@ -10,7 +10,7 @@
     goto(`/item/${id}`);
   }
   async function fetchInventory() {
-    const response = await fetch("http://localhost:5000/api/inventory");
+    const response = await fetch("https://whjpx3pm-5000.inc1.devtunnels.ms/api/inventory");
     inventory = await response.json();
     filteredInventory = inventory;
     console.log(filteredInventory);
