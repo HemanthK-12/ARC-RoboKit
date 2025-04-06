@@ -24,7 +24,7 @@
         error = "Item not found";
       }
 
-      const response2 = await fetch("http://localhost:5000/api/users");
+      const response2 = await fetch("https://whjpx3pm-5000.inc1.devtunnels.ms/api/users");
       if (!response2.ok) throw new Error("Failed to fetch users");
       const users = await response2.json();
       console.log(users);
